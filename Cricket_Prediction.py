@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import os
 
 st.set_page_config(page_title="Cricket Score Predictor", layout="wide")
 
@@ -40,7 +41,9 @@ elif st.session_state.page == 'T20_Predictor':
     with col2:
         st.title(" 🏏 T20_Prediction")
     st.markdown("###")
-    pipe_1 = pickle.load(open('T20.pkl', 'rb'))
+    model_path = os.path.join(os.path.dirname(__file__), 'T20.pkl')
+    pipe_1 = pickle.load(open(model_path, 'rb'))
+    # pipe_1 = pickle.load(open('T20.pkl', 'rb'))
 
     teams = ['India', 'Bangladesh', 'Sri Lanka', 'West Indies', 'South Africa',
              'Pakistan', 'New Zealand', 'England', 'Australia']
